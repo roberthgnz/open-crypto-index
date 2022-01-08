@@ -15,7 +15,7 @@ export default function Box({ title, items }) {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`/icons/${asset.symbol}.svg`}
+                src={`/icons/${asset.symbol.toLowerCase()}.svg`}
                 alt={asset.name}
                 height={32}
               />
