@@ -51,6 +51,7 @@ export default function Box({ title, items }) {
                 textAlign: "right",
               }}
             >
+              <span>WEIGHT</span>
               <span>{asset.weight}%</span>
             </div>
           </div>
