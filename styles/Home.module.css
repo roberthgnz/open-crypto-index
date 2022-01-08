@@ -1,5 +1,7 @@
 .container {
   padding: 0 2rem;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .main {
@@ -16,4 +18,19 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .container {
+    padding: 0 0.5rem;
+  }
+  .main {
+    padding: 2rem 0;
+  }
+  .title {
+    font-size: 3rem;
+  }
 }

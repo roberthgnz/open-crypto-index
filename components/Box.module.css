@@ -32,9 +32,37 @@
   border-radius: 5px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 992px) {
   .grid {
-    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .card {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+  }
+  .card div:nth-child(1) {
     flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .card div:nth-child(1) div {
+    margin-left: 0 !important;
+    margin-top: 0.16rem;
+  }
+  .card div:nth-child(3) {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    place-self: stretch !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
 }
