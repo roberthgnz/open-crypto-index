@@ -21,7 +21,7 @@ const getWeights = async (index) => {
            link
           .attr("href")
           .split(link.text().toLowerCase())[1]
-          .split('-')[0];
+          .split('-')[0]}`
       const weight = parseFloat(
         $(el).find("td:nth-child(2)").text().replace("%", "")
       );
