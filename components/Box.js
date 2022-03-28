@@ -22,6 +22,7 @@ export default function Box({ title, items }) {
               <div
                 style={{
                   marginLeft: "0.5rem",
+                  textTransform: "uppercase",
                 }}
               >
                 <strong>{asset.symbol}</strong>

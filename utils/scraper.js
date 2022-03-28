@@ -16,12 +16,10 @@ const getWeights = async (index) => {
     const weights = [];
     $("#main table tbody tr").each(async (_, el) => {
       const name = $(el).find("td:nth-child(1)").text();
-      const link = $(el).find("td:nth-child(1) a")
-      const symbol = `${
-           link
-          .attr("href")
-          .split(link.text().toLowerCase())[1]
-          .split('-')[0]}`
+      const link = $(el).find("td:nth-child(1) a");
+      const symbol =
+        link.attr("href").split(slugify(link.text()))[1]?.split("-")[0] ||
+        slugify(link.text());
       const weight = parseFloat(
         $(el).find("td:nth-child(2)").text().replace("%", "")
       );
