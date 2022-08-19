@@ -1,26 +1,16 @@
-import axios from "axios";
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import Box from "../components/Box";
+import { useFetch } from "../hooks/useFetch";
+
 import styles from "../styles/Home.module.css";
 
+import Box from "../components/Box";
+
 export default function Home() {
-  const [oci5, setOci5] = useState([]);
-  const [oci10, setOci10] = useState([]);
-  const [oci25, setOci25] = useState([]);
+  const [oci5, loadingOci5] = useFetch("/api/rebalance?index=5");
 
-  useEffect(() => {
-    (async () => {
-      const { data: oci5 } = await axios("/api/rebalance?index=5");
-      setOci5(oci5);
+  const [oci10, loadingOci10] = useFetch("/api/rebalance?index=10");
 
-      const { data: oci10 } = await axios("/api/rebalance?index=10");
-      setOci10(oci10);
-
-      const { data: oci25 } = await axios("/api/rebalance?index=25");
-      setOci25(oci25);
-    })();
-  }, []);
+  const [oci25, loadingOci25] = useFetch("/api/rebalance?index=25");
 
   return (
     <div className={styles.container}>
@@ -38,9 +28,19 @@ export default function Home() {
           <h1 className={styles.title}>Open Crypto Index</h1>
           <p>Reflects the data calculated and provided by MVIS</p>
           <div className={styles.grid}>
-            <Box title={"OCI5"} items={oci5} />
-            <Box title={"OCI10"} items={oci10} />
-            <Box title={"OCI25"} items={oci25} />
+            <Box title={"OCI5"} length={5} items={oci5} loading={loadingOci5} />
+            <Box
+              title={"OCI10"}
+              length={10}
+              items={oci10}
+              loading={loadingOci10}
+            />
+            <Box
+              title={"OCI25"}
+              length={25}
+              items={oci25}
+              loading={loadingOci25}
+            />
           </div>
         </section>
       </main>

@@ -1,11 +1,26 @@
 import styles from "./Box.module.css";
 
-export default function Box({ title, items }) {
+export default function Box({ length, title, items, loading }) {
+  if (loading) {
+    return (
+      <article>
+        <h2 className={styles.placeholderTitle}>
+          <div className={styles.activity}></div>
+        </h2>
+        <div className={styles.grid}>
+          {Array.from({ length }).map((_, i) => (
+            <div key={i} className={styles.placeholderCard}></div>
+          ))}
+        </div>
+      </article>
+    );
+  }
+
   return (
     <article>
       <h2>{title}</h2>
       <div className={styles.grid}>
-        {items.map((asset) => (
+        {(items || []).map((asset) => (
           <div className={styles.card} key={asset.symbol}>
             <div
               style={{
