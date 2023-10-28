@@ -7,24 +7,26 @@ const slugify = (text) => {
 
 const getWeights = async (index) => {
   try {
-    const url = `https://www.mvis-indices.com/indices/digital-assets/mvis-cryptocompare-digital-assets-${index}/components`;
+    const url = `https://www.marketvector.com/indexes/digital-assets/marketvector-digital-assets-${index}`;
+    
     const { data } = await axios({
       method: "GET",
       url,
     });
+
     const $ = cheerio.load(data);
+
     const weights = [];
-    $("#main table tbody tr").each(async (_, el) => {
-      const name = $(el).find("td:nth-child(1)").text();
-      const link = $(el).find("td:nth-child(1) a");
-      const symbol =
-        link.attr("href").split(slugify(link.text()))[1]?.split("-")[0] ||
-        slugify(link.text());
-      const weight = parseFloat(
-        $(el).find("td:nth-child(2)").text().replace("%", "")
-      );
-      weights.push({ name, symbol, weight });
+
+    $("#top-components table tbody tr").each(async (i, el) => {
+      if (i === 0) return;
+
+      const name = $(el).find('[data-label="Component"]').text();
+      const weight = $(el).find('[data-label="Weight"]').text().replace("%", "")
+
+      weights.push({ name, weight });
     });
+
     return weights;
   } catch (error) {
     console.error(error);

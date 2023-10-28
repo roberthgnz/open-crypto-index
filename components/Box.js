@@ -21,19 +21,13 @@ export default function Box({ length, title, items, loading }) {
       <h2>{title}</h2>
       <div className={styles.grid}>
         {(items || []).map((asset) => (
-          <div className={styles.card} key={asset.symbol}>
+          <div className={styles.card} key={asset.name}>
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
               }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`/icons/${asset.symbol.toLowerCase()}.svg`}
-                alt={asset.name}
-                height={32}
-              />
               <div
                 style={{
                   marginLeft: "0.5rem",
