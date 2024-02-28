@@ -11,6 +11,9 @@ const getWeights = async (index) => {
     
     const { data } = await axios({
       method: "GET",
+      headers: {
+        "User-Agent": "Mozilla/5.0",
+      },
       url,
     });
 
