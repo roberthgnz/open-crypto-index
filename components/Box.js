@@ -48,7 +48,7 @@ export default function Box({ length, title, items, loading }) {
               <div
                 style={{
                   width: `${asset.weight}%`,
-                  backgroundColor: "#999",
+                  backgroundColor: "#7332ff",
                 }}
               ></div>
             </div>

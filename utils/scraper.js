@@ -24,8 +24,8 @@ const getWeights = async (index) => {
     $("#top-components table tbody tr").each(async (i, el) => {
       if (i === 0) return;
 
-      const name = $(el).find('[data-label="Component"]').text();
-      const weight = $(el).find('[data-label="Weight"]').text().replace("%", "")
+      const name = $(el).find('[data-label="Component"]').text().trim();
+      const weight = $(el).find('[data-label="Weight"]').text().replace("%", "").trim();
 
       weights.push({ name, weight });
     });
